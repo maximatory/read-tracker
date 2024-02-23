@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { apiBooks } from './api/apiBooks'
-import BookItem from './components/BookItem/BookItem';
+import BooksList from './components/BooksList/BooksList';
 
 export default function App() {
-    const [data, setData] = useState([]);
+    const [foundBooks, setFoundBooks] = useState([]);
     const [search, setSearch] = useState('');
 
     const getBooks = async (search) => {
         const books = await apiBooks(search)
-        setData(books)
+        setFoundBooks(books)
     }
 
     return (
@@ -21,15 +21,7 @@ export default function App() {
                     <button onClick={() => getBooks(search)}>Search</button>
                 </form>
             </div>
-            {
-                data?.map((item) => {
-                    const bookInfo = item.volumeInfo
-                    console.log(bookInfo)
-                        return (
-                            <BookItem key={bookInfo.infoLink} bookInfo={bookInfo}/>
-                        )
-                })
-            }
+           <BooksList books={foundBooks}/>
         </>
     );
 }
