@@ -1,0 +1,45 @@
+.card {
+    display: grid;
+    grid-template-areas: "img content" "description description";
+    grid-template-columns: 230px 1fr;
+    row-gap: 20px;
+    column-gap: 20px;
+    justify-content: start;
+
+    &__imageWrapper {
+        grid-area: img;
+        width: 230px;
+        height: 350px;
+        background-color: #b0b0b0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__contentWrapper {
+        grid-area: content;
+        border: 1px solid black;
+    }
+
+    &__description {
+        grid-area: description;
+        border: 1px solid red;
+    }
+
+    &__title {
+        margin-bottom: 10px;
+    }
+
+    button {
+        margin-right: 10px;
+        padding: 10px 5px;
+        cursor: pointer;
+    }
+}

@@ -4,6 +4,8 @@ import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import SearchPage from "../pages/SearchPage/SearchPage";
 import LibraryPage from "../pages/LibraryPage/LibraryPage";
 import StatisticsPage from "../pages/StatisticsPage/StatisticsPage";
+import BookCardPage from "../pages/BookCardPage/BookCardPage";
+
 
 export const router = createBrowserRouter([
     {
@@ -14,6 +16,10 @@ export const router = createBrowserRouter([
             {
                 path: "/search",
                 element: <SearchPage/>,
+            },
+            {
+                path: "/search/:bookId",
+                element: <BookCardPage/>
             },
             {
                 path: "/library",

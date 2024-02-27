@@ -1,6 +1,7 @@
 import styles from './BookItem.module.scss'
+import { Link } from 'react-router-dom'
 
-export default function BookItem({bookInfo}) {
+export default function BookItem({bookInfo, bookId}) {
     return (
         <div>
             <div className={styles.card}>
@@ -21,10 +22,12 @@ export default function BookItem({bookInfo}) {
                 <div className={styles.card__contentWrapper}>
                     <div className={styles.card__author}>{bookInfo.authors}</div>
                     <div className={styles.card__title}>{bookInfo.title}</div>
-                    <div className={styles.card__description}>{bookInfo.description}</div>
+                    {/* <div className={styles.card__description}>{bookInfo.description}</div> */}
                 </div>
                 <div className={styles.card__buttonWrapper}>
-                    <button>Подробнее</button>
+                    <button>
+                        <Link to={`/search/${bookId}`}>Подробнее</Link>
+                    </button>
                     <button>Добавить в библиотеку</button>
                 </div>
             </div>

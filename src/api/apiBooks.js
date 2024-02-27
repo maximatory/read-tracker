@@ -16,3 +16,17 @@ export const apiBooks = async (search)=>{
         console.log(error)
     }
 }
+
+export const apiBook = async (id)=>{
+    try {
+        const response = await axios.get(`${BASE_URL}/${id}`, {
+            params: {
+                key: API_KEY,
+            }
+        })
+        // console.log('response', response.data)
+        return response.data;
+    } catch (error) {
+        console.log(error)
+    }
+}

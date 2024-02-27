@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { apiBooks } from '../../api/apiBooks';
 import BooksList from '../../components/BooksList/BooksList';
 import Skeleton from '../../components/Skeleton/Skeleton';
-import styles from './SearchPage.module.scss'
+import { Outlet } from 'react-router-dom';
 
 export default function SearchPage() {
   const [foundBooks, setFoundBooks] = useState([]);
@@ -14,12 +14,13 @@ export default function SearchPage() {
       if(search.length){
         setIsLoading(true)
         const books = await apiBooks(search)
+        // console.log(books)
         setFoundBooks(books)
         setSearch('')
         setIsLoading(false)
       }
     } catch (error) {
-      console.log(error)
+      console.log(error)      
     }
   }
 
@@ -38,6 +39,7 @@ export default function SearchPage() {
         </form>
       </div>
       {!isLoading ? <BooksList books={foundBooks} /> : <Skeleton />}
+      <Outlet/>
     </>
   )
 }
