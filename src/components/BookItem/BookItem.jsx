@@ -22,7 +22,6 @@ export default function BookItem({bookInfo, bookId}) {
                 <div className={styles.card__contentWrapper}>
                     <div className={styles.card__author}>{bookInfo.authors}</div>
                     <div className={styles.card__title}>{bookInfo.title}</div>
-                    {/* <div className={styles.card__description}>{bookInfo.description}</div> */}
                 </div>
                 <div className={styles.card__buttonWrapper}>
                     <button>

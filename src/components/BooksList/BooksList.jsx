@@ -8,7 +8,6 @@ export default function BooksList({ books }) {
           books?.map((book, index) => {
             const bookInfo = book.volumeInfo
             const bookId = book.id
-            console.log(book)
             return (
               <BookItem 
                 key={index} 
