@@ -1,36 +1,30 @@
 import { useState } from 'react';
-import { apiBooks } from '../../api/apiBooks';
 import BooksList from '../../components/BooksList/BooksList';
 import Skeleton from '../../components/Skeleton/Skeleton';
 import { Outlet } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import { setBooks } from '../../store/slices/searchSlice';
+import {setSearchQuery} from '../../store/slices/searchSlice'
+import { useGetBooksQuery } from '../../store/services/booksApi';
 
 export default function SearchPage() {
   const dispatch = useDispatch()
-  const {searchQuery, books} = useSelector(state=> state.books.books)
-  const [search, setSearch] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  
-  const getBooks = async (search) => {
-    try {
-      if(search.length){
-        setIsLoading(true)
-        const data = await apiBooks(search)
-        dispatch(setBooks({searchQuery: search, books: data}))
-        setSearch('')
-        setIsLoading(false)
-      }
-    } catch (error) {
-      console.log(error)      
+  const {searchQuery} = useSelector(state=>state.search)
+  const [search, setSearch] = useState('')
+
+  const { 
+    data:books, 
+    error, 
+    isLoading,
+    originalArgs,
+  } = useGetBooksQuery(searchQuery, {
+    skip: !searchQuery
+  })
+
+  const getBooks = () =>{
+    if(search.length>0){
+      dispatch(setSearchQuery(search))
+      setSearch('')
     }
-  }
-  
-  const resetSearch = ()=>{
-    dispatch(setBooks({
-      searchQuery: '',
-      books: []
-    }))
   }
 
   return (
@@ -44,12 +38,13 @@ export default function SearchPage() {
             onChange={(e) => {
             setSearch(e.target.value)
           }} />
-          <button onClick={() => getBooks(search)}>Search</button>
-          <button onClick={()=> resetSearch()}>Reset search</button>
+          <button onClick={getBooks}>Search</button>
         </form>
       </div>
-      <h2>{searchQuery ? `Результаты поиска ${searchQuery}` : 'Список пуст'}</h2>
-      {!isLoading ? <BooksList books={books} /> : <Skeleton />}
+      <h2>{originalArgs ? `Результаты поиска ${originalArgs}` : 'Список пуст'}</h2>
+      {error && <p>Произошла ошибка</p>}
+      {!isLoading ? <BooksList books={books?.items} /> : <Skeleton />}
+      
       <Outlet/>
     </>
   )
