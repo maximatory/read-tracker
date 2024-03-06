@@ -2,19 +2,37 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import styles from './BookCardPage.module.scss';
 import { useGetBookByIdQuery } from "../../store/services/booksApi";
 
+import Button from "../../components/Button/Button";
+import { useEffect, useState } from "react";
+
+
 export default function BookCardPage() {
   const { bookId } = useParams();
   const navigate = useNavigate();
+  const [cardBook, setCardBook] = useState([])
 
   const {
     data,
     isLoading,
-    error
+    isSuccess,
+    error,
   } = useGetBookByIdQuery(bookId)
 
-  if(error){
+  if (error) {
     navigate("/404", { replace: true });
-  }  
+  }
+
+  useEffect(()=>{
+    if(isSuccess){
+      setCardBook({
+        googleId: bookId,
+        img: data.volumeInfo.imageLinks,
+        title: data.volumeInfo.title,
+        authors: data.volumeInfo.authors,
+        description: data.volumeInfo.description,
+      })
+    }
+  }, [isSuccess])
 
   return (
     <>
@@ -38,8 +56,17 @@ export default function BookCardPage() {
             <button>
               <Link to={"/search"}>Назад к поиску</Link>
             </button>
-            <button>Добавить в библиотеку</button>
-            <button>Добавить в вишлист</button>
+            <Button
+              name="библиотеку"
+              card={cardBook}
+              type="library"
+            />
+            <Button
+              name="вишлист"
+              card={cardBook}
+              type="wishlist"
+            />
+
           </div>
 
           <div className={styles.card__description}>

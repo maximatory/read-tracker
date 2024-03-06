@@ -14,6 +14,9 @@ export default function HomePage() {
               <Link to="/library">Библиотека</Link>
             </li>
             <li>
+              <Link to="/wishlist">Вишлист</Link>
+            </li>
+            <li>
               <Link to="/statistics">Статистика</Link>
             </li>
           </ul>
