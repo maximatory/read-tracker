@@ -7,7 +7,7 @@ const [state, setState] = useState([]);
 
 useEffect(()=>{
     if(isSuccess){
-        const filteredLibrary = data.filter(card=> card.status === type)
+        const filteredLibrary = data.filter(card=> card.type === type)
         setState(filteredLibrary)
     }
 }, [isSuccess, data, type])

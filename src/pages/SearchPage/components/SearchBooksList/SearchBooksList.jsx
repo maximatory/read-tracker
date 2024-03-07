@@ -1,8 +1,7 @@
-import BookItem from "../BookItem/BookItem"
-import styles from './BooksList.module.scss'
+import SearchBookItem from "../SearchBookItem/SearchBookItem"
+import styles from './SearchBooksList.module.scss'
 
-export default function BooksList({ books }) {
-  console.log('books', books)
+export default function SearchBooksList({ books }) {
   return (
       <ul className={styles.booksList}>
         {
@@ -10,7 +9,7 @@ export default function BooksList({ books }) {
             const bookInfo = book.volumeInfo
             const bookId = book.id
             return (
-              <BookItem 
+              <SearchBookItem 
                 key={index} 
                 bookInfo={bookInfo} 
                 bookId={bookId}

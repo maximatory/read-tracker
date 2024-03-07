@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import BooksList from '../../components/BooksList/BooksList';
+import SearchBooksList from './components/SearchBooksList/SearchBooksList';
 import Skeleton from '../../components/Skeleton/Skeleton';
 import { Outlet } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
@@ -43,7 +43,7 @@ export default function SearchPage() {
       </div>
       <h2>{originalArgs ? `Результаты поиска ${originalArgs}` : 'Список пуст'}</h2>
       {error && <p>Произошла ошибка</p>}
-      {!isLoading ? <BooksList books={books?.items} /> : <Skeleton />}
+      {!isLoading ? <SearchBooksList books={books?.items} /> : <Skeleton />}
       
       <Outlet/>
     </>

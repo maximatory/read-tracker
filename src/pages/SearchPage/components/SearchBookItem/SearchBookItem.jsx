@@ -1,4 +1,4 @@
-import styles from './BookItem.module.scss'
+import styles from './SearchBookItem.module.scss'
 import { Link } from 'react-router-dom'
 
 export default function BookItem({bookInfo, bookId}) {

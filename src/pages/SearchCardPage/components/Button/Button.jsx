@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { useSetBookToLibraryMutation } from "../../store/services/libraryApi"
+import { useSetBookToLibraryMutation } from "../../../../store/services/libraryApi"
 
-export default function Button({ name, card, type }) {
+export default function Button({ name, card, type, setIsModal }) {
     const [setBookToLibrary, { isLoading, isSuccess, isError }] = useSetBookToLibraryMutation()
     const [status, setStatus] = useState('Отправить')
 
@@ -11,6 +11,7 @@ export default function Button({ name, card, type }) {
         }
         if (isSuccess) {
             setStatus('Отправлено')
+            setIsModal(false)
         }
         if (isError) {
             ('Не отправлено')

@@ -4,9 +4,9 @@ import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import SearchPage from "../pages/SearchPage/SearchPage";
 import LibraryPage from "../pages/LibraryPage/LibraryPage";
 import StatisticsPage from "../pages/StatisticsPage/StatisticsPage";
-import BookCardPage from "../pages/BookCardPage/BookCardPage";
+import SearchCardPage from "../pages/SearchCardPage/SearchCardPage";
 import WishlistPage from "../pages/WishlistPage/WishlistPage";
-
+import LibraryCardPage from "../pages/LibraryCardPage";
 
 export const router = createBrowserRouter([
     {
@@ -20,11 +20,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/search/:bookId",
-                element: <BookCardPage/>
+                element: <SearchCardPage/>
             },
             {
                 path: "/library",
                 element: <LibraryPage/>,
+            },
+            {
+                path: "/library/:cardId",
+                element: <LibraryCardPage/>,
             },
             {
                 path: "/statistics",
