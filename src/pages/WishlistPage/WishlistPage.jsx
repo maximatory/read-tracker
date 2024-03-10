@@ -1,12 +1,14 @@
 import useCollection from '../../helpers/hooks/useLibrary'
-import {useGetLibraryQuery} from '../../store/services/libraryApi'
+import WishlistList from './components/WishlistList/WishlistList'
+import Skeleton from '../../components/Skeleton/Skeleton'
 
 export default function WishlistPage() {
-
-  const {state: books, isLoading, data} = useCollection('wishlist')
-  console.log(books)
-
+  const {state: books, isLoading} = useCollection('wishlist')
+  
   return (
-    <div>Wishlist</div>
+    <>
+      <div>Wishlist</div>
+      {isLoading ? <Skeleton/> : <WishlistList books={books}/>}
+    </>
   )
 }
