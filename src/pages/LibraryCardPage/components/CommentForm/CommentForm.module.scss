@@ -1,0 +1,26 @@
+.form {
+    border: 1px solid rgb(172, 172, 172);
+    padding: 10px 15px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+
+    & select {
+        margin-left: 10px;
+    }
+
+    & textarea {
+        height: 150px;
+        padding: 10px 15px;
+    }
+
+    & button {
+        display: inline-block;
+        width: 150px;
+    }
+}

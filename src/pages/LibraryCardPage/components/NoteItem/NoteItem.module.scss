@@ -1,0 +1,17 @@
+.note {
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+
+    &__date {
+        font-size: 1.4rem;
+        color: rgba(0, 0, 0, 0.458);
+    }
+
+    &__type {
+        font-weight: 600;
+    }
+
+    &__comment {
+        font-style: italic;
+    }
+}

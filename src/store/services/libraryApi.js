@@ -14,6 +14,14 @@ export const libraryApi = createApi({
             },
             providesTags: ['Library']
         }),
+        getCardById: builder.query({
+            query: (id) => {
+                return {
+                    url: `/library/${id}`,
+                }
+            },
+            providesTags: ['Library']
+        }),
         setBookToLibrary: builder.mutation({
             query: (bookCard) => ({
                 url: '/library',
@@ -44,5 +52,6 @@ export const {
     useGetLibraryQuery, 
     useSetBookToLibraryMutation, 
     useEditBookLibraryMutation,
-    useDeleteBookLibraryMutation 
+    useDeleteBookLibraryMutation,
+    useGetCardByIdQuery
 } = libraryApi;

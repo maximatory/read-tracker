@@ -1,0 +1,10 @@
+.control {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+
+    button {
+        width: 150px;
+    }
+}

@@ -29,6 +29,9 @@ export default function BookCardPage() {
         title: data.volumeInfo.title,
         authors: data.volumeInfo.authors,
         description: data.volumeInfo.description,
+        readingStage: null,
+        bookType: null,
+        history: []
       })
     }
   }, [isSuccess])

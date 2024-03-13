@@ -6,7 +6,7 @@ import LibraryPage from "../pages/LibraryPage/LibraryPage";
 import StatisticsPage from "../pages/StatisticsPage/StatisticsPage";
 import SearchCardPage from "../pages/SearchCardPage/SearchCardPage";
 import WishlistPage from "../pages/WishlistPage/WishlistPage";
-import LibraryCardPage from "../pages/LibraryCardPage";
+import LibraryCardPage from "../pages/LibraryCardPage/LibraryCardPage";
 
 export const router = createBrowserRouter([
     {
