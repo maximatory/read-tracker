@@ -41,10 +41,11 @@ export default function SearchPage() {
           <button onClick={getBooks}>Search</button>
         </form>
       </div>
-      <h2>{originalArgs ? `Результаты поиска ${originalArgs}` : 'Список пуст'}</h2>
+      <div>{originalArgs ? `Результаты поиска ${originalArgs}` : 'Список пуст'}</div>
       {error && <p>Произошла ошибка</p>}
-      {!isLoading ? <SearchBooksList books={books?.items} /> : <Skeleton />}
-      
+      {!isLoading 
+        ? <SearchBooksList books={books?.items} /> 
+        : <Skeleton count='9' type='banner' direction='rows'/> }     
       <Outlet/>
     </>
   )

@@ -7,8 +7,12 @@ export default function WishlistPage() {
   
   return (
     <>
-      <div>Wishlist</div>
-      {isLoading ? <Skeleton/> : <WishlistList books={books}/>}
+      <h1>Wishlist</h1>
+      {!isLoading && !books.length && <div>Список пуст</div>}
+      {!isLoading 
+        ? <WishlistList books={books}/>
+        : <Skeleton count='5' type='row' direction='column'/>
+      }
     </>
   )
 }
